@@ -1,0 +1,21 @@
+
+<form  novalidate class="login form">
+	<h1>评估系统登录</h1>
+	<div class="form-item">
+		<span class="label">用户名:</span>
+		<span class="input"><input type="text" name="user" ng-model="user.userName"  ng-blur="$ctrl.checkInput(user.userName)"></span>
+	</div>
+	<div class="form-item">
+		<span class="label">
+			密码:
+		</span>
+		<span class="input"><input type="password" name="pass" ng-model="user.pass"   ng-blur="$ctrl.checkInput(user.pass)"></span>
+	</div>
+	<div class="form-item error">
+		<div class="input">{{errorMessage}}</div>
+	</div>
+	<div class="form-item">
+		<div class="input"><a ng-click="login()" class="button button-block button-primary">登录</a></div>
+	</div>
+	
+</form>  

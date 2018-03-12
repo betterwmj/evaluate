@@ -1,0 +1,52 @@
+<header>
+	<div class="float-left">
+		<div>
+			<h1>
+				报告
+			</h1>
+			<div class="breadcrumb">
+				<a href="/view/openProjectList">
+					{{formConfig.review_type}}
+				</a>
+				／ 报告
+			</div>
+		</div>
+	</div>
+
+</header>
+
+<div class="wrapper">
+	<form class="left">
+		<h2 align="left"> 评审申请 </h2> 
+		<div class="form col2" ng-repeat="Levelheader in formConfig.item_group ">
+			<div class="form-group-header"> {{Levelheader.name}} </div> 
+			<div class="form-item" ng-repeat="Secondheader in Levelheader.item">
+				<span class="label">{{Secondheader.name}}</span>
+				<span class="input" ng-if="Secondheader.type === 'file'">
+					<a ng-href="{{Secondheader.inputValue}}" ng-show="$ctrl.isShowFile" target="_black">
+						查看已提交文件
+					</a>
+				</span>
+				<span class="input" ng-if="Secondheader.type !== 'file'">{{Secondheader.inputValue}}</span>
+			</div>
+		</div>
+	</form>
+
+
+	<form class="right">
+
+		<h2 align="left"> 评审回复 </h2> 
+		<div class="form col2" ng-repeat="Levelheader in formConfigReply.item_group ">
+			<div class="form-group-header"> {{Levelheader.name}} </div> 
+			<div class="form-item" ng-repeat="Secondheader in Levelheader.item">
+				<span class="label">{{Secondheader.name}}</span>
+				<span class="input" ng-if="Secondheader.type === 'file'">
+					<a ng-href="{{Secondheader.inputValue}}" ng-show="$ctrl.isShowFile" target="_black"> 查看已提交文件 </a>
+				</span>
+				<span class="input" ng-if="Secondheader.type !== 'file'">{{Secondheader.inputValue}}</span>
+			</div>
+		</div>
+
+	</form>	
+</div>
+

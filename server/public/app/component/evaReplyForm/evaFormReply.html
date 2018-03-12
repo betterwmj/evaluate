@@ -1,0 +1,67 @@
+<header>
+	<div class="float-left">
+		<div>
+			<h1>
+				回复
+			</h1>
+			<div class="breadcrumb">
+				<a href="/view/openProjectList">
+					{{formConfig.review_type}}
+				</a>
+				／ 回复
+			</div>
+		</div>
+	</div>
+	<div class="float-right">
+		<ul class="menu-button" ng-show="$ctrl.isShow">
+			<li class="impo" ng-click="submit(true)">
+				提交
+			</li>
+			<li ng-click="submit(false)">
+				保存草稿
+			</li>
+		</ul>
+	</div>
+</header>
+<form>
+	<div class="form col2" ng-repeat="Levelheader in formConfig.item_group ">
+		<div class="form-group-header">
+			{{Levelheader.name}}
+		</div>
+		<div class="form-item" ng-repeat="Secondheader in Levelheader.item">
+			<span class="label">
+				{{Secondheader.name}}
+			</span>
+			<span class="input" ng-if="Secondheader.type === 'file'">
+				<input accept="application/vnd.ms-powerpoint" id="files" name="one_pic" ng-attr-type="{{Secondheader.type}}" ng-model="Secondheader.inputValue">
+					<a ng-href="{{Secondheader.inputValue}}" ng-show="$ctrl.isShowFile" target="_black">
+						查看回复文件
+					</a>
+				</input>
+			</span>
+			<span class="input" ng-if="Secondheader.type === 'text'">
+				<input ng-attr-name="{{Secondheader.id}}" ng-attr-type="{{Secondheader.type}}" ng-blur="$ctrl.checkInput(Secondheader)" ng-model="Secondheader.inputValue">
+				</input>
+			</span>
+			<span class="input" ng-if="Secondheader.type === 'textarea'">
+				<textarea cols="100" ng-attr-name="{{Secondheader.id}}" ng-blur="$ctrl.checkInput(Secondheader)" ng-model="Secondheader.inputValue" rows="10">
+				</textarea>
+			</span>
+			<span class="input" ng-if="Secondheader.type === 'checkbox'">
+				<input cols="100" ng-attr-name="{{Secondheader.id}}" ng-attr-type="{{Secondheader.type}}" ng-blur="$ctrl.checkInput(Secondheader)" ng-model="Secondheader.inputValue" rows="10">
+				</input>
+			</span>
+			<span class="error-msg">
+				{{Secondheader.errorMsg}}
+			</span>
+		</div>
+	</div>
+</form>
+<div align="center">
+	<span style="color:red">
+		{{apierrorMessage}}
+	</span>
+	<span style="color:red">
+		{{errorMessage}}
+	</span>
+</div>

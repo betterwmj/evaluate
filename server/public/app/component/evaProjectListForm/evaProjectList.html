@@ -1,0 +1,71 @@
+
+
+
+	<header>
+		<div class="float-left">
+			<div>
+				<h1>专案列表</h1>
+				<div class="breadcrumb"><a href="">视觉评审</a> ／ 评审的专案列表</div>
+			</div>
+			
+		</div>
+		<div class="float-right">
+			<div class="search-bar">
+				<input type="text" name="input" ng-model="$ctrl.searchKey" >
+				<a href="#" class="icon-button" ng-click="search()"><span class="icon icon-search"></span></a>
+			</div>
+		</div>
+	</header>
+
+
+		
+		<table class="table table-striped">
+		  <thead>
+			  <tr>
+				<th>专案名</th>
+				<th>专案背景</th>
+				<th>专案要求</th>
+				<th>操作</th>
+			  </tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="Levelheader in formConfig.detail">
+			  <td>{{Levelheader.rfq_project_name}}</td>
+			  <td>{{Levelheader.background}}</td>
+			  <td>{{Levelheader.requirement}}</td>
+			  <td>
+				<a class="button button-small" ng-click="request(Levelheader.rfq_project_id,Levelheader.rfq_project_group_id)">
+				  提交评估申请
+				</a>
+
+				<a class="button button-small" ng-disabled="Levelheader.draft_flag !== 1" ng-click="reply(Levelheader.rfq_project_id,Levelheader.rfq_project_group_id)" >
+				 回复
+				</a>
+
+				<a class="button button-small" ng-disabled="Levelheader.status !== 1" ng-click="look(Levelheader.rfq_project_id,Levelheader.rfq_project_group_id)" type="button">
+				  查看报告
+				</a>
+			  </td>
+			</tr>
+		  </tbody>
+		  
+	   </table>
+	   <div>
+		  	<div class="float-right">
+		
+				<div class="pager">
+					<span 
+						ng-disabled="$ctrl.current === 1" 
+						ng-click="$ctrl.prevPage()">上页</span>
+					<span 
+						ng-repeat="itemPage in $ctrl.pageBtns" 
+						ng-click="$ctrl.clickPage(itemPage)" 
+						ng-class="{'active':itemPage.page === $ctrl.current}">{{itemPage.label}}</span>
+					<span 
+						ng-disabled="$ctrl.current === $ctrl.totalPage" 
+						ng-click="$ctrl.nextPage()">下页</span>
+				</div>
+		  	</div>
+		  </div>
+
+

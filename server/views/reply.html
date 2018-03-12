@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge"/>
+	<meta name="description" content=""/>
+	<title></title>
+	<script src="/jslib/angular.js"></script>
+	<script src="/jslib/angular-cookies.js"></script>
+	<script src="/app/rootApp.js"></script>
+	<script src="/app/service/httpService.js"></script>
+	<script src="/app/component/evaReplyForm/evaFormReply.js"></script>
+	<script src="/app/service/evaFormReplyService.js"></script>
+	<meta name="renderer" content="webkit">
+	<link rel="stylesheet" href="/css/style.css">
+	<script type="text/javascript" src="/jslib/jquery-1.11.3.min.js"></script>
+	<!--[if lte IE 11]>
+		<link rel="stylesheet" href="/css/ie.css">	
+		<script src="/jslib/html5.min.js"></script>
+	<![endif]-->
+</head>
+<body ng-app="app" ng-controller="indexCtrler">
+	<eva-form-reply query="query"></eva-form-reply>
+<script>
+    angular.module("app")
+    .controller("indexCtrler",['$scope',function($scope){
+        $scope.query = {
+           "rfq_project_id":{{query['rfq_project_id']}},
+           "rfq_project_group_id":{{query['rfq_project_group_id']}},
+           "request_flag":{{query['request_flag']}}
+        };
+    }]);
+</script>
+</body>
+</html>
